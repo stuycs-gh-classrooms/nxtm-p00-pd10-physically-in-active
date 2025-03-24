@@ -26,7 +26,7 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: NAME OF YOUR FORCE
+#### Custom Force: NAME OF YOUR FORCE (maybe an alien force thats abducting the ball from a UFO. or a chaos force that randomly makes the balls dart.)
 
 ### Forumla
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)

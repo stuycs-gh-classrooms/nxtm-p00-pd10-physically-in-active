@@ -28,7 +28,7 @@ All projects will require the following:
 
 #### Custom Force: NAME OF YOUR FORCE (maybe an alien force thats abducting the ball from a UFO. or a chaos force that randomly makes the balls dart.)
 
-### Forumla
+### Forumla (will include radius and mass
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
 YOUR ANSWER HERE

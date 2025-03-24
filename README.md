@@ -26,8 +26,7 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: NAME OF YOUR FORCE (mayube electrostatic force and we make a separate class that would have electromagnetic forces. maybe an alien force thats abducting the ball from a UFO. or a chaos force that randomly makes the balls dart.)
-
+#### Custom Force: NAME OF YOUR FORCE (mayube electrostatic force and we make a separate class that would have electromagnetic forces (coulombs law))
 ### Forumla (will include radius and mass
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 

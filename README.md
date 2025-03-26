@@ -26,11 +26,14 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: NAME OF YOUR FORCE (mayube electrostatic force and we make a separate class that would have electromagnetic forces (coulombs law))
-### Forumla (will include radius and mass
+#### Custom Force: ELECTROSTATIC FORCES (similar to the gravitational formula but with electrical charges, might introduce a new class which can introduce electrostatic forces into the mix)
+### Forumla (will include radius and mass) (kq1q2)/(r^2)
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
-YOUR ANSWER HERE
+the formula is kq1q2 / r^2  
+where k is the constant
+q1 and q2 are the charges
+and r^2 is the distance between the centers of the objects
 
 ### Custom Force
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?

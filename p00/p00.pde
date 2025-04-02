@@ -27,23 +27,35 @@ void setup() {
 
 }//setup
 
+
 void draw() {
   background(255);
   displayMode();
 
-
   o0.display();
   o1.display();
+  o2.display();
+  o3.display();
 
   PVector sf = o0.getSpring(o0.next, SPRING_LENGTH, SPRING_K);
   o0.applyForce(sf);
   sf = o1.getSpring(o1.previous, SPRING_LENGTH, SPRING_K);
   o1.applyForce(sf);
+  sf = o2.getSpring(o2.next, SPRING_LENGTH, SPRING_K);
+  o2.applyForce(sf);
+  sf = o3.getSpring(o3.previous, SPRING_LENGTH, SPRING_K);
+  o3.applyForce(sf);
 
-  o0.move(toggles[BOUNCE]);
-  o1.move(toggles[BOUNCE]);
-
-}//draw
+  o0.bounce(toggles[BOUNCE]);
+  o1.bounce(toggles[BOUNCE]);
+  o2.bounce(toggles[BOUNCE]);
+  o3.bounce(toggles[BOUNCE]);
+  
+  o0.move(toggles[MOVING]);
+  o1.move(toggles[MOVING]);
+  o2.move(toggles[MOVING]);
+  o3.move(toggles[MOVING]);
+}
 
 
 void makeOrbs() {
@@ -58,6 +70,7 @@ void makeOrbs() {
   o2.previous = o1;
   o2.next = o3;
   o3.previous = o2;
+  o3.next = o0;
 
 }
 

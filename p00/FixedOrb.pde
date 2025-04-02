@@ -10,7 +10,7 @@ class FixedOrb extends Orb {
     c = color(255, 0, 0);
   }
 
-  void move(boolean bounce) {
+  void bounce(boolean bounce) {
     //do nothing
   }
 

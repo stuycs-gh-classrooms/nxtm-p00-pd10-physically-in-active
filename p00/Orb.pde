@@ -30,15 +30,20 @@ class Orb {
    }
 
   //movement behavior
-  void move(boolean bounce) {
+  void bounce(boolean bounce) {
     if (bounce) {
       xBounce();
       yBounce();
+    
     }
-
+  }
+   
+  void move(boolean move) {
+    if(move) {
     velocity.add(acceleration);
     center.add(velocity);
     acceleration.mult(0);
+    }
   }//move
 
   void applyForce(PVector force) {

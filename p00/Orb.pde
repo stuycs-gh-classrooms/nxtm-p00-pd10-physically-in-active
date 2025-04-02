@@ -1,5 +1,4 @@
 class Orb {
-
   //instance variables
   PVector center;
   PVector velocity;
@@ -7,7 +6,8 @@ class Orb {
   float bsize;
   float mass;
   color c;
-
+  float magneticAttraction;
+  float charge;  // New instance variable for electric charge
 
   Orb() {
      bsize = random(10, MAX_SIZE);
@@ -17,6 +17,8 @@ class Orb {
      mass = random(10, 100);
      velocity = new PVector();
      acceleration = new PVector();
+     magneticAttraction = random(0.5, 1.5);
+     charge = random(-1, 1);  // Assign a random charge
      setColor();
   }
 
@@ -26,6 +28,8 @@ class Orb {
      center = new PVector(x, y);
      velocity = new PVector();
      acceleration = new PVector();
+     magneticAttraction = random(0.5, 1.5);
+     charge = random(-1, 1);  // Assign a random charge
      setColor();
    }
 
@@ -34,17 +38,17 @@ class Orb {
     if (bounce) {
       xBounce();
       yBounce();
-    
     }
   }
    
   void move(boolean move) {
-    if(move) {
-    velocity.add(acceleration);
-    center.add(velocity);
-    acceleration.mult(0);
+    if (move) {
+      velocity.add(acceleration);
+      velocity.mult(0.95);  // Add damping to slow down the velocity
+      center.add(velocity);
+      acceleration.mult(0);
     }
-  }//move
+  }
 
   void applyForce(PVector force) {
     PVector scaleForce = force.copy();
@@ -62,10 +66,10 @@ class Orb {
   }
 
   PVector getGravity(Orb other, float G) {
-    float strength = G * mass*other.mass;
+    float strength = G * mass * other.mass;
     //dont want to divide by 0!
     float r = max(center.dist(other.center), MIN_SIZE);
-    strength = strength/ pow(r, 2);
+    strength = strength / pow(r, 2);
     PVector force = other.center.copy();
     force.sub(center);
     force.mult(strength);
@@ -82,47 +86,67 @@ class Orb {
     direction.mult(mag);
 
     return direction;
-  }//getSpring
+  }
 
-  boolean yBounce(){
+  boolean yBounce() {
     if (center.y > height - bsize/2) {
       velocity.y *= -1;
       center.y = height - bsize/2;
-
       return true;
-    }//bottom bounce
-    else if (center.y < bsize/2) {
-      velocity.y*= -1;
+    } else if (center.y < bsize/2) {
+      velocity.y *= -1;
       center.y = bsize/2;
       return true;
     }
     return false;
-  }//yBounce
+  }
+
   boolean xBounce() {
     if (center.x > width - bsize/2) {
       center.x = width - bsize/2;
       velocity.x *= -1;
       return true;
-    }
-    else if (center.x < bsize/2) {
+    } else if (center.x < bsize/2) {
       center.x = bsize/2;
       velocity.x *= -1;
       return true;
     }
     return false;
-  }//xbounce
+  }
 
   boolean collisionCheck(Orb other) {
-    return ( this.center.dist(other.center)
-             <= (this.bsize/2 + other.bsize/2) );
-  }//collisionCheck
+    return (this.center.dist(other.center) <= (this.bsize/2 + other.bsize/2));
+  }
 
+  void applyMagneticForce(PVector field, float strength) {
+    PVector force = field.copy();
+    force.mult(magneticAttraction * strength);
+    applyForce(force);
+  }
+
+  // Function to calculate electric force between two orbs
+  PVector getElectricForce(Orb other, float k) {
+    PVector direction = PVector.sub(other.center, this.center);
+    float r = direction.mag();
+    float strength = k * this.charge * other.charge / (r * r);
+    direction.normalize();
+    direction.mult(strength);
+    return direction;
+  }
+
+  // Function to apply the tadpole force
+  void applyTadpoleForce() {
+    PVector tadpoleForce = new PVector(cos(random(TWO_PI)), sin(random(TWO_PI)));
+    float distance = random(10, 50);  // Random distance between 10 and 50 pixels
+    tadpoleForce.mult(distance);
+    applyForce(tadpoleForce);
+  }
 
   void setColor() {
     color c0 = color(0, 255, 255);
     color c1 = color(0);
     c = lerpColor(c0, c1, (mass-MIN_SIZE)/(MAX_MASS-MIN_SIZE));
-  }//setColor
+  }
 
   //visual behavior
   void display() {
@@ -131,5 +155,5 @@ class Orb {
     circle(center.x, center.y, bsize);
     fill(0);
     //text(mass, center.x, center.y);
-  }//display
-}//Ball
+  }
+}

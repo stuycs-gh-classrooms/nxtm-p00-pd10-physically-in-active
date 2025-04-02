@@ -26,31 +26,32 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: NAME OF YOUR FORCE (maybe an alien force thats abducting the ball from a UFO. or a chaos force that randomly makes the balls dart.)
-
-### Forumla (will include radius and mass
+#### Custom Force: ELECTROSTATIC FORCES (similar to the gravitational formula but with electrical charges, might introduce a new class which can introduce electrostatic forces into the mix)
+### Forumla (will include radius and mass) (kq1q2)/(r^2)
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
-YOUR ANSWER HERE
+the formula is kq1q2 / r^2  
+where k is the constant
+q1 and q2 are the charges
+and r^2 is the distance between the centers of the objects
 
 ### Custom Force
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
-  - YOUR ANSWER HERE
+  - this formula is similar to gravity so we can use that
 
 - Does this force require any new constants, if so what are they and what values will you try initially?
-  - YOUR ANSWER HERE
+  - q which is electrostatic force (usually its specific to each respectice elctric field but we might js keep it constant for simplicity)
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
-  - YOUR ANSWER HERE
+  - radius of electric field and also negative and positive sides and attractive forces
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
-  - YOUR ANSWER HERE
+  - based on environemtn 
 
 - In order to calculate this force, do you need to perform extra intermediary calculations? If so, what?
-  - YOUR ANSWER HERE
+  - we might need to assign charges to the orbs
 
 --- 
-
 ### Simulation 1: Gravity
 Describe how you will attempt to simulate orbital motion.
 
